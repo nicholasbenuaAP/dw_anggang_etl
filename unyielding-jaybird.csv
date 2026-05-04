@@ -1,0 +1,139 @@
+timestamp,level,flow_run_id,task_run_id,message
+2026-05-04 13:10:28.612265+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Worker 'ProcessWorker fc1e8f31-b267-4c66-b757-57812576697f' submitting flow run '84362109-4cb5-4bc5-a4b5-36104072d987'
+2026-05-04 13:10:29.121783+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Starting flow run process...
+2026-05-04 13:10:29.151154+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Flow run 'unyielding-jaybird' submitted to infrastructure
+2026-05-04 13:10:30.414530+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Running 1 deployment pull step(s)
+2026-05-04 13:10:30.441044+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Executing deployment step: git_clone
+2026-05-04 13:10:34.295246+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Deployment step 'git_clone' completed successfully
+2026-05-04 13:10:34.308438+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,All deployment steps completed successfully
+2026-05-04 13:10:34.317300+00:00,40,84362109-4cb5-4bc5-a4b5-36104072d987,,"Unexpected exception encountered when trying to load flow
+Traceback (most recent call last):
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 2873, in load_function_and_convert_to_flow
+    func = import_object(entrypoint)  # pyright: ignore[reportRedeclaration]
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/importtools.py"", line 180, in import_object
+    obj = getattr(obj, part)
+AttributeError: module '__prefect_loader_9147d2954ee9948b__' has no attribute 'main_etl_pipeline'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/engine.py"", line 165, in <module>
+    flow: ""Flow[..., Any]"" = load_flow(flow_run)
+                             ~~~~~~~~~^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flow_engine.py"", line 233, in load_flow
+    flow = run_coro_as_sync(
+        load_flow_from_flow_run(flow_run, use_placeholder_flow=False)
+    )
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 207, in run_coro_as_sync
+    return call.result()
+           ~~~~~~~~~~~^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/_internal/concurrency/calls.py"", line 365, in result
+    return self.future.result(timeout=timeout)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/_internal/concurrency/calls.py"", line 192, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File ""/usr/lib/python3.14/concurrent/futures/_base.py"", line 395, in __get_result
+    raise self._exception
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/_internal/concurrency/calls.py"", line 441, in _run_async
+    result = await coro
+             ^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 188, in coroutine_wrapper
+    return await task
+           ^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/client/utilities.py"", line 69, in wrapper
+    return await func(client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 3169, in load_flow_from_flow_run
+    flow = await run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 233, in run_sync_in_worker_thread
+    result = await anyio.to_thread.run_sync(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        call_with_mark, call, abandon_on_cancel=True, limiter=get_thread_limiter()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/to_thread.py"", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py"", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py"", line 1002, in run
+    result = context.run(func, *args)
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 243, in call_with_mark
+    return call()
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 2875, in load_function_and_convert_to_flow
+    raise RuntimeError(
+        f""Function with name {func_name!r} not found in {path!r}.""
+    ) from exc
+RuntimeError: Function with name 'main_etl_pipeline' not found in 'pipeline.py'."
+2026-05-04 13:10:34.705848+00:00,40,84362109-4cb5-4bc5-a4b5-36104072d987,,Process for flow run 'unyielding-jaybird' exited with status code: 1; Process exited with a general error.
+2026-05-04 13:10:34.706542+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Check the flow run logs for an unhandled exception or assertion error.
+2026-05-04 13:10:34.751494+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Loading flow to check for on_crashed hooks
+2026-05-04 13:10:34.825337+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Running 1 deployment pull step(s)
+2026-05-04 13:10:34.827438+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Executing deployment step: git_clone
+2026-05-04 13:10:34.839594+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Check the flow run logs for an unhandled exception or assertion error.
+2026-05-04 13:10:38.828737+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,Deployment step 'git_clone' completed successfully
+2026-05-04 13:10:38.833857+00:00,20,84362109-4cb5-4bc5-a4b5-36104072d987,,All deployment steps completed successfully
+2026-05-04 13:10:38.843834+00:00,30,84362109-4cb5-4bc5-a4b5-36104072d987,,"Runner failed to retrieve flow to execute on_crashed hooks for flow run UUID('84362109-4cb5-4bc5-a4b5-36104072d987').
+Traceback (most recent call last):
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 2873, in load_function_and_convert_to_flow
+    func = import_object(entrypoint)  # pyright: ignore[reportRedeclaration]
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/importtools.py"", line 180, in import_object
+    obj = getattr(obj, part)
+AttributeError: module '__prefect_loader_5a885641dd988dcd__' has no attribute 'main_etl_pipeline'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/runner/runner.py"", line 1598, in _run_on_crashed_hooks
+    flow = await load_flow_from_flow_run(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        flow_run, storage_base_path=str(self._tmp_dir)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/client/utilities.py"", line 69, in wrapper
+    return await func(client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 3169, in load_flow_from_flow_run
+    flow = await run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 233, in run_sync_in_worker_thread
+    result = await anyio.to_thread.run_sync(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        call_with_mark, call, abandon_on_cancel=True, limiter=get_thread_limiter()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/to_thread.py"", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py"", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/anyio/_backends/_asyncio.py"", line 1002, in run
+    result = context.run(func, *args)
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/utilities/asyncutils/__init__.py"", line 243, in call_with_mark
+    return call()
+  File ""/home/svnetr/Documents/College/Data Warehouse/Praktek/elt11/dw_anggang_etl/venv/lib/python3.14/site-packages/prefect/flows.py"", line 2875, in load_function_and_convert_to_flow
+    raise RuntimeError(
+        f""Function with name {func_name!r} not found in {path!r}.""
+    ) from exc
+RuntimeError: Function with name 'main_etl_pipeline' not found in 'pipeline.py'."
